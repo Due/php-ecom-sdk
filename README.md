@@ -29,7 +29,58 @@ require_once('/path/to/php-ecom-sdk/init.php');
 
 ## Getting Started
 
-Simple usage looks like:
+Set API Key and App Id
+
+```php
+\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
+\Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
+```
+
+Create A Customer
+
+```php
+$customer = \Due\Customers::create(array(
+    'email' => 'customer@email.com',
+    'phone' => '2226061234',
+    'full_name' => 'Alex Brown',
+    'card_id' => '2726251911',
+    'card_hash' => 'CC_f4nu9f2nfue9432fnu4e932fbu432gfb4u923fnjdwbu29'
+));
+
+$customer_id = $customer->id;
+```
+
+Charge A Customer
+
+```php
+$transaction = \Due\Customers::charge(array(
+    'amount' => 15,
+    'currency' => 'USD',
+    'customer_id' => $customer_id
+));
+$transaction_id = $transaction->id;
+```
+
+Get Transaction
+
+```php
+$transaction = \Due\Transactions::get(array(
+    'id' => $transaction_id
+));
+```
+
+Get Transaction List
+
+```php
+$transactions_list = \Due\Transactions::all(array(
+    'page' => 1
+));
+foreach ($transactions_list->transactions as $transaction) {
+    $transaction_id = $transaction->id;
+}
+```
+
+Charge A Card
 
 ```php
 \Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
@@ -41,6 +92,35 @@ $card_transaction = \Due\Charge::card(array(
     'card_hash' => 'CC_XMzfDhNahJsfPAGPzVpX'
 ));
 var_dump($card_transaction);
+```
+
+Get A Customer
+
+```php
+$customer = \Due\Customers::get(array(
+    'id' => $customer_id
+));
+
+$customer_id = $customer->id;
+```
+
+Get Customer List
+
+```php
+$customer_list = \Due\Customers::all(array(
+    'page' => 1
+));
+foreach ($customer_list->customers as $customer) {
+    $customer_id = $customer->id;
+}
+```
+
+Update Customer
+
+```php
+$customer->card_id = '132311820';
+$customer->card_hash = 'CC_VXV81vIv7rx0VRXbLlxq';
+$updated_customer = \Due\Customers::update($customer);
 ```
 
 ## Contribution Requests
