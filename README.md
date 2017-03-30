@@ -1,4 +1,4 @@
-# Due PHP Library
+# Due E-Commerce PHP SDK
 =========================
 
 Sign up for a free account at https://app.due.com/register
