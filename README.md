@@ -83,8 +83,6 @@ foreach ($transactions_list->transactions as $transaction) {
 Charge A Card
 
 ```php
-\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
-\Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
 $card_transaction = \Due\Charge::card(array(
     'amount' => 15,
     'currency' => 'USD',
