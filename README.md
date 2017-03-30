@@ -3,6 +3,8 @@
 
 Sign up for a free account at https://app.due.com/register
 
+Request Access: https://due.com/blog/request-access-use-due-payment-gateway-woocommerce/
+
 ## Composer
 
 You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
