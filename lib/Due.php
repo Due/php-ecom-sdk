@@ -10,17 +10,22 @@ namespace Due;
 class Due
 {
     // ------------------------------------------------------------------------>
-    // @var string Due API key
+    // @var string API key
     public static $apiKey;
 
     // @var string Application Id
     public static $appId;
 
-    // @var string Due API base URL
+    // @var string API base URLs
+    public static $domainStage = 'https://api-stage.due.com';
+    public static $domainProd = 'https://api.due.com';
     public static $domain = 'https://api.due.com';
 
-    // @var string Due API version
+    // @var string API version
     public static $apiVersion = 'v1';
+
+    // @var string Environment Name
+    public static $envName = 'prod';
     // ------------------------------------------------------------------------>
     /**
      * Get Root API Path
@@ -52,6 +57,36 @@ class Due
     public static function setApiKey($arg_api_key)
     {
         self::$apiKey = $arg_api_key;
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Get Environment Name
+     *
+     * @return string
+     */
+    public static function getEnvName()
+    {
+        return self::$envName;
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Set Environment Name
+     *
+     * @param string $arg_env_name
+     * @return null
+     * @throws \Exception
+     */
+    public static function setEnvName($arg_env_name)
+    {
+        if($arg_env_name == 'stage'){
+            self::$envName = 'stage';
+            self::$domain = self::$domainStage;
+        }elseif($arg_env_name == 'prod'){
+            self::$envName = 'prod';
+            self::$domain = self::$domainProd;
+        }else{
+            throw new \Exception('Invalid Environment Given',4046969);
+        }
     }
     // ------------------------------------------------------------------------>
     /**

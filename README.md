@@ -29,11 +29,17 @@ require_once('/path/to/php-ecom-sdk/init.php');
 
 ## Getting Started
 
-Set API Key and App Id
+First set your API Key and App Id
 
 ```php
 \Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
 \Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
+```
+
+The default environment is production, but you can set it to stage for testing
+
+```php
+\Due\Due::setEnvName('stage'); //set to 'stage' or 'prod'
 ```
 
 Create A Customer
@@ -58,6 +64,7 @@ $transaction = \Due\Customers::charge(array(
     'currency' => 'USD',
     'customer_id' => $customer_id
 ));
+
 $transaction_id = $transaction->id;
 ```
 
@@ -75,6 +82,7 @@ Get Transaction List
 $transactions_list = \Due\Transactions::all(array(
     'page' => 1
 ));
+
 foreach ($transactions_list->transactions as $transaction) {
     $transaction_id = $transaction->id;
 }
@@ -83,13 +91,14 @@ foreach ($transactions_list->transactions as $transaction) {
 Charge A Card
 
 ```php
-$card_transaction = \Due\Charge::card(array(
+$transaction = \Due\Charge::card(array(
     'amount' => 15,
     'currency' => 'USD',
     'card_id' => '1238203690',
     'card_hash' => 'CC_XMzfDhNahJsfPAGPzVpX'
 ));
-var_dump($card_transaction);
+
+$transaction_id = $transaction->id;
 ```
 
 Get A Customer
@@ -108,6 +117,7 @@ Get Customer List
 $customer_list = \Due\Customers::all(array(
     'page' => 1
 ));
+
 foreach ($customer_list->customers as $customer) {
     $customer_id = $customer->id;
 }
@@ -119,6 +129,8 @@ Update Customer
 $customer->card_id = '132311820';
 $customer->card_hash = 'CC_VXV81vIv7rx0VRXbLlxq';
 $updated_customer = \Due\Customers::update($customer);
+
+$customer_id = $customer->id;
 ```
 
 ## Contribution Requests
