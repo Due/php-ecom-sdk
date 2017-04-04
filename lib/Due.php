@@ -1,5 +1,4 @@
 <?php
-
 namespace Due;
 // ---------------------------------------------------------------------------->
 /**
@@ -13,11 +12,14 @@ class Due
     // @var string API key
     public static $apiKey;
 
+    // @var string Platform Id
+    public static $platformId;
+
     // @var string Application Id
     public static $appId;
 
     // @var string API base URLs
-    public static $domainStage = 'https://api-stage.due.com';
+    public static $domainStage = 'https://stage-api.due.com';
     public static $domainProd = 'https://api.due.com';
     public static $domain = 'https://api.due.com';
 
@@ -56,7 +58,7 @@ class Due
      */
     public static function setApiKey($arg_api_key)
     {
-        self::$apiKey = $arg_api_key;
+        if(is_string($arg_api_key))self::$apiKey = $arg_api_key;
     }
     // ------------------------------------------------------------------------>
     /**
@@ -108,7 +110,29 @@ class Due
      */
     public static function setAppId($arg_app_id)
     {
-        self::$appId = $arg_app_id;
+        if(is_string($arg_app_id))self::$appId = $arg_app_id;
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Get Platform Id
+     *
+     * @return string
+     */
+    public static function getPlatformId()
+    {
+        return (empty(self::$platformId)?'':self::$platformId);
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Set Platform Id
+     *
+     * @param string $arg_platform_id
+     *
+     * @return null
+     */
+    public static function setPlatformId($arg_platform_id)
+    {
+        if(is_string($arg_platform_id))self::$platformId = $arg_platform_id;
     }
     // ------------------------------------------------------------------------>
     /**
@@ -130,6 +154,6 @@ class Due
      */
     public static function setApiVersion($arg_api_version)
     {
-        self::$apiVersion = $arg_api_version;
+        if(is_string($arg_api_version))self::$apiVersion = $arg_api_version;
     }
 }

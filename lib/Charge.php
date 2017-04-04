@@ -53,11 +53,11 @@ class Charge
     {
         //validate params
         $data = self::getParams($arg_params);
-        if(!empty($data['order'])&&!empty(json_encode($data['order']))){
-            $data['rdata']['order'] = json_encode($data['order']);
+        if(!empty($data['order'])){
+            $data['rdata']['order'] = json_decode(json_encode($data['order']), true);
         }
         if(!empty($data['metadata'])){
-            $data['metadata'] = json_encode($data['metadata']);
+            $data['metadata'] = json_decode(json_encode($data['metadata']),true);
         }
         $data['source_id'] = Due::getAppId();
         $data['amount'] = number_format(floatval($data['amount']), 2, '.', '');

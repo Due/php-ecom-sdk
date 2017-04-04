@@ -36,6 +36,7 @@ class APIRequests
         $headers = array(
             'Accept: application/json',
             'DUE-API-KEY: '.Due::getApiKey(),
+            'DUE-PLATFORM-ID: '.Due::getPlatformId(),
         );
         if($arg_method == APIRequests::METHOD_PUT){
             $headers[]= 'Content-Type: application/x-www-form-urlencoded; charset=utf-8';
