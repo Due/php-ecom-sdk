@@ -28,20 +28,31 @@ require_once('/path/to/php-ecom-sdk/init.php');
 
 ## Getting Started
 
-First set your API Key and App Id
-
-```php
-\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
-\Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
-```
-
-The default environment is production, but you can set it to stage for testing
+1. The default environment is production, but you can set it to stage for testing
 
 ```php
 \Due\Due::setEnvName('stage'); //set to 'stage' or 'prod'
 ```
 
-Create A Customer
+2. Set your API Key and App Id
+
+```php
+//API Key from your Due Account
+\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
+//App Id given after approval
+\Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
+```
+
+3. Platforms will set their Platform Id instead of an App Id. Please contact support@due.com for more info on Platform Payments.
+
+```php
+//Platform user's Due API Key
+\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
+//Platform Id given after approval
+\Due\Due::setPlatformId('18Q3Xa21e42xp');
+```
+
+### Create A Customer
 
 ```php
 $customer = \Due\Customers::create(array(
@@ -55,7 +66,7 @@ $customer = \Due\Customers::create(array(
 $customer_id = $customer->id;
 ```
 
-Charge A Customer
+### Charge A Customer
 
 ```php
 $transaction = \Due\Customers::charge(array(
@@ -67,7 +78,7 @@ $transaction = \Due\Customers::charge(array(
 $transaction_id = $transaction->id;
 ```
 
-Get Transaction
+### Get Transaction
 
 ```php
 $transaction = \Due\Transactions::get(array(
@@ -75,7 +86,7 @@ $transaction = \Due\Transactions::get(array(
 ));
 ```
 
-Get Transaction List
+### Get Transaction List
 
 ```php
 $transactions_list = \Due\Transactions::all(array(
@@ -87,7 +98,7 @@ foreach ($transactions_list->transactions as $transaction) {
 }
 ```
 
-Charge A Card
+### Charge A Card
 
 ```php
 $transaction = \Due\Charge::card(array(
@@ -100,7 +111,7 @@ $transaction = \Due\Charge::card(array(
 $transaction_id = $transaction->id;
 ```
 
-Get A Customer
+### Get A Customer
 
 ```php
 $customer = \Due\Customers::get(array(
@@ -110,7 +121,7 @@ $customer = \Due\Customers::get(array(
 $customer_id = $customer->id;
 ```
 
-Get Customer List
+### Get Customer List
 
 ```php
 $customer_list = \Due\Customers::all(array(
@@ -122,7 +133,7 @@ foreach ($customer_list->customers as $customer) {
 }
 ```
 
-Update Customer
+### Update Customer
 
 ```php
 $customer->card_id = '132311820';
