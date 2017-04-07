@@ -25,6 +25,7 @@ class Charge
         $data = array(
             'amount',
             'currency',
+            'webhook_url',
             'customer_id',
             'card_id',
             'card_hash',
@@ -56,11 +57,20 @@ class Charge
         if(!empty($data['order'])){
             $data['rdata']['order'] = json_decode(json_encode($data['order']), true);
         }
+        unset($data['order']);
         if(!empty($data['metadata'])){
             $data['metadata'] = json_decode(json_encode($data['metadata']),true);
         }
         $data['source_id'] = Due::getAppId();
         $data['amount'] = number_format(floatval($data['amount']), 2, '.', '');
+
+        if(
+            !empty($data['webhook_url']) &&
+            (!preg_match("%^(http|https)://\S+%", $data['webhook_url']) ||
+                filter_var($data['webhook_url'], FILTER_VALIDATE_URL) === false)
+        ){
+            throw new \Exception('invalid webhook url given',4040001);
+        }
 
         //submit to api
         $customer_data = APIRequests::request(

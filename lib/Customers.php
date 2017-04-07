@@ -143,6 +143,7 @@ class Customers
         }else{
             return null;
         }
+        unset($data['id']);
 
         //submit to api
         $customer_data = APIRequests::request(

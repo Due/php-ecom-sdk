@@ -26,8 +26,7 @@ class Refund
             'transaction_id',
             'customer_id',
             'security_token',
-            'customer_ip',
-            'metadata'
+            'customer_ip'
         );
         foreach ($data as $key) {
             if(!empty($arg_params[$key])){
@@ -48,6 +47,7 @@ class Refund
     public static function doCardRefund($arg_params)
     {
         //validate params
+        $data = array();
         if(is_array($arg_params)){
             $data = self::getParams($arg_params);
         }else{
@@ -55,9 +55,6 @@ class Refund
             if(!empty($transaction['id'])){
                 $data = array('transaction_id'=>$transaction['id']);
             }
-        }
-        if(!empty($data['metadata'])){
-            $data['metadata'] = json_encode($data['metadata']);
         }
         //submit to api
         $refund_data = APIRequests::request(
