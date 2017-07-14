@@ -62,6 +62,7 @@ class Charge
             $data['metadata'] = json_decode(json_encode($data['metadata']),true);
         }
         $data['source_id'] = Due::getAppId();
+        $data['rail_type'] = Due::getRailType();
         $data['amount'] = number_format(floatval($data['amount']), 2, '.', '');
 
         if(

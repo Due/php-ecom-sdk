@@ -12,6 +12,9 @@ class Due
     // @var string API key
     public static $apiKey;
 
+    // @var string Payment Rail Type
+    public static $railType;
+
     // @var string Platform Id
     public static $platformId;
 
@@ -59,6 +62,28 @@ class Due
     public static function setApiKey($arg_api_key)
     {
         if(is_string($arg_api_key))self::$apiKey = $arg_api_key;
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Get Payment Rail Type
+     *
+     * @return string|null
+     */
+    public static function getRailType()
+    {
+        return (empty(self::$railType)?'':self::$railType);
+    }
+    // ------------------------------------------------------------------------>
+    /**
+     * Set Payment Rail Type
+     *
+     * @param string $arg_rail_type
+     *
+     * @return null
+     */
+    public static function setRailType($arg_rail_type)
+    {
+        if(is_string($arg_rail_type))self::$railType = $arg_rail_type;
     }
     // ------------------------------------------------------------------------>
     /**
