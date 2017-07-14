@@ -71,7 +71,7 @@ class Due
      */
     public static function getRailType()
     {
-        return (empty(self::$railType)?'':self::$railType);
+        return (empty(self::$railType)?'us':self::$railType);
     }
     // ------------------------------------------------------------------------>
     /**
