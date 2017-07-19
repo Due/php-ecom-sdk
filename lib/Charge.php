@@ -27,11 +27,17 @@ class Charge
             'currency',
             'webhook_url',
             'customer_id',
+            'unique_id',
+            'rtoken',
+            'rdata',
+            'source',
             'card_id',
             'card_hash',
             'order',
             'security_token',
             'customer_ip',
+            'customer',
+            'shipping',
             'metadata'
         );
         foreach ($data as $key) {
