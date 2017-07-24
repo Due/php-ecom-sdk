@@ -65,7 +65,7 @@ class APIRequests
             if(!empty($return['body']['errors'][0])){
                 $api_error = $return['body']['errors'][0];
                 $message = (empty($api_error['message']) ? '' : $api_error['message']);
-                $code = (empty($api_error['code']) ? '' : $api_error['code']);
+                $code = (empty($api_error['code']) ? 0 : $api_error['code']);
                 throw new \Exception($message,$code);
             }
         }else{
