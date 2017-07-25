@@ -2,6 +2,8 @@
 
 Sign up for a free account at https://app.due.com/register
 
+Working PHP Example: https://static.due.com/code-examples/due-ecom-php-test.zip
+
 Request Access: https://due.com/blog/request-access-use-due-payment-gateway-woocommerce/
 
 API Docs: https://api-docs.due.com
@@ -36,24 +38,25 @@ require_once('/path/to/php-ecom-sdk/init.php');
 
 ```php
 \Due\Due::setEnvName('stage'); //set to 'stage' or 'prod'
+\Due\Due::setRailType('us'); //set to 'us' or 'us_int'
 ```
 
 2. Set your API Key and App Id
 
 ```php
 //API Key from your Due Account
-\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
+\Due\Due::setApiKey(' -- SET API KEY HERE -- ');
 //App Id given after approval
-\Due\Due::setAppId('test_30b4d69aQ1fb4Q8dkwn3');
+\Due\Due::setAppId(' -- SET APP ID HERE -- ');
 ```
 
 3. Platforms will set their Platform Id instead of an App Id. Please contact support@due.com for more info on Platform Payments.
 
 ```php
 //Platform user's Due API Key
-\Due\Due::setApiKey('1cdb92X9e9613a5r3a64c2X49ec17f7x1b8ac40adcqc0s23bb7f8bxc7q1y');
+\Due\Due::setApiKey(' -- SET API KEY HERE -- ');
 //Platform Id given after approval
-\Due\Due::setPlatformId('18Q3Xa21e42xp');
+\Due\Due::setPlatformId(' -- SET PLATFORM ID HERE -- ');
 ```
 
 ### Create A Customer
